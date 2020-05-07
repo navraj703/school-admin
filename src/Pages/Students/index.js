@@ -34,6 +34,7 @@ const Students = ({width}) => {
             <main className={classes.content} style = {{width : `calc(100% - ${width}px)` ,marginLeft :`${width}px`}}>
                 <div className={classes.toolbar} />
                 <Data />
+             
             </main>
         </>
     )
