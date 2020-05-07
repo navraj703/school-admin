@@ -1,26 +1,14 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import  React , { useState } from 'react'
+import Header from './Component/Header';
+import Students from './Pages/Students'
+const App = () => {
+  const [width, setwidth] = useState(0);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header onWidthChange = {(wi)=>setwidth(wi)}/>
+      <Students width = {width} />
     </div>
-  );
+  )
 }
 
 export default App;
