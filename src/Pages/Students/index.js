@@ -1,43 +1,58 @@
 //React 
-import React , { useEffect } from 'react';
+import React, { useEffect } from 'react';
 //Material-Ui
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Toolbar from '@material-ui/core/Toolbar';
-import { Hidden } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+
+import { auth } from '../../Firebase'
+import { withRouter } from 'react-router-dom'
+
 //Table Component
 import Data from './data'
-
 //Material Styles
 const useStyles = makeStyles((theme) => ({
     toolbar: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-end',
-        padding: theme.spacing(0, 1),
+        paddingTop: "10px",
+        paddingLeft : "16px",
+        paddingRight : "16px",
         // necessary for content to be below app bar
         ...theme.mixins.toolbar
     },
     content: {
         flexGrow: 1,
-        padding: theme.spacing(2),
-    
+
+
     },
+
 }));
 
 //Student Component
-const Students = ({width}) => {
-    
+const Students = ({ width, ...props }) => {
     const classes = useStyles();
+
+
+    useEffect(() => {
+        auth.onAuthStateChanged((user) => {
+            if (!user) {
+                props.history.replace('/login')
+            }
+        });
+    }, []);
+
     return (
         <>
-            <main className={classes.content} style = {{width : `calc(100% - ${width}px)` ,marginLeft :`${width}px`}}>
+            <main className={classes.content} style={{ width: `calc(100% - ${width}px)`, marginLeft: `calc( 15px + ${width}px)`}}>
+
                 <div className={classes.toolbar} />
-                <Data />
-             
-            </main>
+        
+                <Data  />
+
+            </main> 
         </>
     )
 
+
 }
-export default Students;
+export default withRouter(Students);

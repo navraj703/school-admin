@@ -1,167 +1,1 @@
-import React from 'react';
-import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import { MdDashboard, MdSettings } from 'react-icons/md'
-import { MdMessage} from 'react-icons/md'
-import { FaUserAlt } from 'react-icons/fa'
-import  bg  from './bg.jpeg';
-import bg2 from './Forest.jpg'
-const drawerWidth = 240;
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-    },
-    appBar: {
-       backgroundColor:"#333",
-        zIndex: theme.zIndex.drawer + 1,
-        transition: theme.transitions.create(['width', 'margin'], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-    },
-    appBarShift: {
-        marginLeft: drawerWidth,
-        width: `calc(100% - ${drawerWidth}px)`,
-        transition: theme.transitions.create(['width', 'margin'], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-    },
-    menuButton: {
-        marginRight: 36,
-    },
-    hide: {
-        display: 'none',
-    },
-    drawer: {
-        width: drawerWidth,
-        flexShrink: 0,
-        whiteSpace: 'nowrap',
-       
-    },
-    drawerOpen: {
-        width: drawerWidth,
-        backgroundImage: `url(${bg2})`,
-        backgroundRepeat:"no-repeat",
-        backgroundSize:"cover",
-        transition: theme.transitions.create('width', {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-    },
-    drawerClose: {
-        backgroundImage: `url(${bg2})`  ,
-        backgroundRepeat:"no-repeat",
-        backgroundSize:"cover",
-        transition: theme.transitions.create('width', {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-        overflowX: 'hidden',
-        width: theme.spacing(7) + 1,
-        [theme.breakpoints.up('sm')]: {
-            width: theme.spacing(9) + 1,
-        },
-    },
-    toolbar: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        padding: theme.spacing(0, 1),
-        // necessary for content to be below app bar
-        ...theme.mixins.toolbar,
-    },
-    content: {
-        flexGrow: 1,
-        padding: theme.spacing(3),
-    },
-}));
-
-const Header = ({onWidthChange}) => {
-    const classes = useStyles();
-    const theme = useTheme();
-    const [open, setOpen] = React.useState(false);
-
-    const handleDrawerOpen = () => {
-        onWidthChange(240);
-        setOpen(true);
-    };
-
-    const handleDrawerClose = () => {
-        onWidthChange(50);
-        setOpen(false);
-    };
-    return (
-        <>
-            <AppBar
-                position="fixed"
-                className={clsx(classes.appBar, {
-                    [classes.appBarShift]: open,
-                })}
-            >
-                <Toolbar>
-                    <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        edge="start"
-                        className={clsx(classes.menuButton, {
-                            [classes.hide]: open,
-                        })}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant="h6" noWrap>
-                       Welcome Admin
-          </Typography>
-                </Toolbar>
-            </AppBar>
-            <Drawer
-                
-                variant="permanent"
-                className={clsx(classes.drawer, {
-                    [classes.drawerOpen]: open,
-                    [classes.drawerClose]: !open,
-                })}
-                classes={{
-                    paper: clsx({
-                        [classes.drawerOpen]: open,
-                        [classes.drawerClose]: !open,
-                    }),
-                }}
-            >
-                <div className={classes.toolbar}>
-                    <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'rtl' ? <ChevronRightIcon style={{color:"white"}} /> : <ChevronLeftIcon style={{color:"white"}}/>}
-                    </IconButton>
-                </div>
-                <Divider />
-                <List style={{color:"white" }} >
-                   <ListItem > <ListItemIcon> <MdDashboard /></ListItemIcon> <ListItemText>Dashboard</ListItemText> </ListItem>
-                   <ListItem > <ListItemIcon> <FaUserAlt /></ListItemIcon><ListItemText>Users</ListItemText></ListItem>
-                   <ListItem > <ListItemIcon> <MdMessage /></ListItemIcon><ListItemText>Messages</ListItemText></ListItem>
-                </List>
-                <Divider />
-                <List style={{color:"white" }}>
-                <ListItem> <ListItemIcon> <MdSettings /></ListItemIcon> Settings</ListItem>
-                </List>
-            </Drawer>
-        </>
-    )
-}
-
-export default Header;
+//Importing Reactimport React, { useState } from 'react';//WithRouterimport { withRouter } from 'react-router-dom';import { Link } from 'react-router-dom';//Drawer Backgroundsimport bg1 from './background/bg.jpg';import bg2 from './background/bg2.jpg';import bg3 from './background/bg3.jpg';import bg4 from './background/bg4.jpg';import bg5 from './background/bg5.png';//Firebase Authimport  {  auth } from '../../Firebase'//React-Iconsimport {  MdStyle, MdColorLens } from 'react-icons/md';import { MdMessage } from 'react-icons/md';import { FaUserAlt } from 'react-icons/fa';import { FiLogOut, FiNavigation } from 'react-icons/fi';import { GiBackgammon } from 'react-icons/gi'//Bootstrap Modal & Btnimport Modal from 'react-bootstrap/Modal';import { Button } from 'react-bootstrap'//Material-Iconsimport IconButton from '@material-ui/core/IconButton';import MenuIcon from '@material-ui/icons/Menu';import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';import ChevronRightIcon from '@material-ui/icons/ChevronRight';import AccountCircle from '@material-ui/icons/AccountCircle';//Material-Ui Componentsimport Drawer from '@material-ui/core/Drawer';import AppBar from '@material-ui/core/AppBar';import Toolbar from '@material-ui/core/Toolbar';import List from '@material-ui/core/List';import Typography from '@material-ui/core/Typography';import { Divider } from '@material-ui/core/';import ListItem from '@material-ui/core/ListItem';import ListItemIcon from '@material-ui/core/ListItemIcon';import ListItemText from '@material-ui/core/ListItemText';import MenuItem from '@material-ui/core/MenuItem';import Menu from '@material-ui/core/Menu';import ListSubheader from '@material-ui/core/ListSubheader';//Material Stylesimport clsx from 'clsx';import { makeStyles, useTheme } from '@material-ui/core/styles';//Initialize drawer widthconst drawerWidth = 240;//Make Style const useStyles = makeStyles((theme) => ({    root: {        display: 'flex',    },    appBar: {        zIndex: theme.zIndex.drawer + 1,        transition: theme.transitions.create(['width', 'margin'], {            easing: theme.transitions.easing.sharp,            duration: theme.transitions.duration.leavingScreen,        }),    },    appBarShift: {        marginLeft: drawerWidth,        width: `calc(100% - ${drawerWidth}px)`,        transition: theme.transitions.create(['width', 'margin'], {            easing: theme.transitions.easing.sharp,            duration: theme.transitions.duration.enteringScreen,        }),    },    menuButton: {        marginRight: 36,    },    hide: {        display: 'none',    },    drawer: {        width: drawerWidth,        flexShrink: 0,        whiteSpace: 'nowrap',    },    divider: {        color: "#fff",        backgroundColor: "#fff"    },    drawerOpen: {        width: drawerWidth,        //    backgroundImage: `url(${bg1})`,        //     backgroundRepeat: "no-repeat",        //     backgroundSize: "cover",        transition: theme.transitions.create('width', {            easing: theme.transitions.easing.sharp,            duration: theme.transitions.duration.enteringScreen,        }),    },    drawerClose: {        //    backgroundImage:`url(${bg1})`,        //     backgroundRepeat: "no-repeat",        //     backgroundSize: "cover",        transition: theme.transitions.create('width', {            easing: theme.transitions.easing.sharp,            duration: theme.transitions.duration.leavingScreen,        }),        overflowX: 'hidden',        width: theme.spacing(7) + 1,        [theme.breakpoints.up('sm')]: {            width: theme.spacing(9) + 1,        },    },    toolbar: {        display: 'flex',        alignItems: 'center',        justifyContent: 'flex-end',        padding: theme.spacing(0, 1),        // necessary for content to be below app bar        ...theme.mixins.toolbar,    },    content: {        flexGrow: 1,        padding: theme.spacing(3),    },    sectionDesktop: {        display: 'none',        [theme.breakpoints.up('md')]: {            display: 'flex',        },    },    sectionMobile: {        display: 'flex',        [theme.breakpoints.up('md')]: {            display: 'none',        },    },    profileMenu: {        display: 'flex',        justifyContent: "flex-end",        marginLeft: "auto"    },    colorContainer: {        display: "flex",        flexDirection: "center",        justifyContent: "center",        padding: "3px"    },    colorItem: {        width: "25px",        height: "25px",        borderRadius: "15px",        marginRight: "7px",        transition: "2s ease-out",        cursor: "pointer",    },    bgContainer: {        display: "flex",        flexDirection: "center",        justifyContent: "center",        padding: "3px"    },    bgItem: {        width: "40px",        height: "80px",        borderRadius: "10px",        marginRight: "7px",        transition: "2s ease-out",        cursor: "pointer",    },    profileImg: {        width: "25px",        height: "25px",        borderRadius: "15px"    },    drawerContainer: {        backgroundWidth: "100%",        backgroundRepeat: "no-repeat",        backgroundSize: "cover",        height: "100%"    }}));const Header = ({ onWidthChange, ...props }) => {    const [open, setOpen] = React.useState(false);    const [show, setShow] = React.useState(false);    const [anchorEl, setAnchorEl] = React.useState(null);    const [url, setUrl] = useState("");    const [myColor, setMyColor] = useState("#5bc0de");    const [colorPallet, setColorPallet] = useState(false);    const [subHeader, setSubHeader] = useState(false)    const [bg, setBg] = useState(false);    const [bgImg, setBgImg] = useState(bg5);       const classes = useStyles();    const theme = useTheme();    const MenuOpen = Boolean(anchorEl);    const handlePallet = () => {        if (colorPallet) {            setColorPallet(false)        } else {            setColorPallet(true)        }    }    const handleBg = () => {        if (bg) {            setBg(false)        } else {            setBg(true)        }    }    const handleMenu = (event) => {        setAnchorEl(event.currentTarget);    };    const handleMenuClose = () => {        setAnchorEl(null);    };    const handleDrawerOpen = () => {        onWidthChange(240);        setOpen(true);        setSubHeader(true)        // setBg(true)    };    const handleOpen = () => {        setShow(true)    }    const handleClose = () => {        setShow(false)    }    const handleDrawerClose = () => {        onWidthChange(40);        setOpen(false);        setColorPallet(false)        setSubHeader(false)        setBg(false)    };    async function logOut() {        await auth.signOut();        props.history.push('/login');    }    React.useEffect(() => {        auth.onAuthStateChanged((user) => {            if (user) {                setUrl(user.photoURL)            }        });    }, []);    console.log(url)    function redirect() {        props.history.replace("/reset")    }    const hover = makeStyles((theme) => ({        listItem: {            "&:hover": {                backgroundColor: `${myColor}`,                borderLeft: "4px white solid"            }        },        logOut: {            "&:hover": {                backgroundColor: "#d9534f",                borderLeft: "4px white solid"            }        }    }));    const hoverColor = hover();    return (        <>              {/* App Bar */}            <AppBar                style={{ backgroundColor: `${myColor}`, }}                position="fixed"                className={clsx(classes.appBar, {                    [classes.appBarShift]: open,                })}            >                <Toolbar>                    <IconButton                        color="inherit"                        aria-label="open drawer"                        onClick={handleDrawerOpen}                        edge="start"                        className={clsx(classes.menuButton, {                            [classes.hide]: open,                        })}                    >                        <MenuIcon />                    </IconButton>                    <Typography variant="h6" noWrap>                        Welcome Admin                    </Typography>                    <div className={classes.profileMenu}>                        <IconButton                            aria-label="account of current user"                            aria-controls="menu-appbar"                            aria-haspopup="true"                            onClick={handleMenu}                            color="inherit"                            edge="end"                        >                            {                                url ?                                    <img src={url} alt="documents" className={classes.profileImg} /> :                                    <AccountCircle />                            }                        </IconButton>                        <Menu                            id="menu-appbar"                            anchorEl={anchorEl}                            anchorOrigin={{                                vertical: 'top',                                horizontal: 'right',                            }}                            keepMounted                            transformOrigin={{                                vertical: 'top',                                horizontal: 'right',                            }}                            open={MenuOpen}                            onClose={handleMenuClose}                        >                            <MenuItem onClick={redirect}>Change Password</MenuItem>                            <MenuItem onClick={logOut}><FiLogOut />LogOut</MenuItem>                        </Menu>                    </div>                </Toolbar>            </AppBar>            {/* SideBar */}            <Drawer                variant="permanent"                className={clsx(classes.drawer, {                    [classes.drawerOpen]: open,                    [classes.drawerClose]: !open,                })}                classes={{                    paper: clsx({                        [classes.drawerOpen]: open,                        [classes.drawerClose]: !open,                    }),                }}            >                <div style={{                    backgroundImage: `url(${bgImg})`,                    }}                    className={classes.drawerContainer}                >                    <div className={classes.toolbar}>                        <IconButton onClick={handleDrawerClose}>                            {theme.direction === 'rtl' ? <ChevronRightIcon style={{ color: "white" }} /> : <ChevronLeftIcon style={{ color: "white" }} />}                        </IconButton>                    </div>                    <Divider className={classes.divider} />                    <List style={{ color: "rgba(255,255,255,0.7)" }}                        subheader={                            subHeader ? <ListSubheader component="li" id="nested-list-subheader" style={{ color: "white", fontSize: "2.5rem", }}>                                <ListItemIcon ><FiNavigation style={{ color: "white", }} size={50} className="mt-2" /></ListItemIcon><ListItemText>Navigation</ListItemText>                            </ListSubheader> : null                        }                    >                        <ListItem onClick={handleDrawerOpen} className={hoverColor.listItem}> <ListItemIcon><FaUserAlt style={{ color: "rgba(255,255,255,0.7)", cursor: "pointer" }} size={25} /></ListItemIcon> <Link to="/" style={{ color: "rgba(255,255,255,0.7)", textDecoration: "none" }}><ListItemText>Students</ListItemText> </Link></ListItem>                        <ListItem onClick={handleDrawerOpen} className={hoverColor.listItem}> <ListItemIcon><MdMessage style={{ color: "rgba(255,255,255,0.7)", cursor: "pointer" }} size={25} /> </ListItemIcon><Link to="/message" style={{ color: "rgba(255,255,255,0.7)", textDecoration: "none" }}><ListItemText>Messages</ListItemText></Link></ListItem>                        {/* <ListItem > <ListItemIcon> <MdMessage /></ListItemIcon><ListItemText>Messages</ListItemText></ListItem> */}                    </List>                    <Divider className={classes.divider} />                    <List                        subheader={                            subHeader ? <ListSubheader className={classes.subHeader} component="div" id="nested-list-subheader" style={{ color: "white", fontSize: "2.5rem", }}>                                <ListItemIcon ><MdStyle style={{ color: "white", }} size={50} className="mt-2" /></ListItemIcon> <ListItemText>Styles</ListItemText>                            </ListSubheader> : null                        }                    >                        <ListItem onClick={handlePallet} className={hoverColor.listItem} style={{ color: "rgba(255,255,255,0.7)", cursor: "pointer" }}> <ListItemIcon><MdColorLens style={{ color: "rgba(255,255,255,0.7)", cursor: "pointer" }} size={25} /> </ListItemIcon><ListItemText>App Bar Color</ListItemText></ListItem>                        {                            colorPallet ? <div className={classes.colorContainer}>                                <div className={classes.colorItem} onClick={() => setMyColor("#0275d8")} style={{ backgroundColor: "#0275d8", }}></div> {/*Primary */}                                <div className={classes.colorItem} onClick={() => setMyColor("#5cb85c ")} style={{ backgroundColor: "#5cb85c", }}></div> {/*Success */}                                <div className={classes.colorItem} onClick={() => setMyColor("#5bc0de")} style={{ backgroundColor: "#5bc0de", }}></div>{/*Info */}                                <div className={classes.colorItem} onClick={() => setMyColor("#f0ad4e ")} style={{ backgroundColor: "#f0ad4e", }}></div>{/*Warning */}                                <div className={classes.colorItem} onClick={() => setMyColor("#d9534f")} style={{ backgroundColor: "#d9534f", }}></div>{/*Danger*/}                            </div> : null                        }                        <ListItem onClick={handleBg} className={hoverColor.listItem} style={{ color: "rgba(255,255,255,0.7)", cursor: "pointer" }}> <ListItemIcon><GiBackgammon style={{ color: "rgba(255,255,255,0.7)", cursor: "pointer" }} size={25} /> </ListItemIcon><ListItemText>Drawer Background </ListItemText></ListItem>                        {                            bg ? <div className={classes.bgContainer}>                                <div className={classes.bgItem} onClick={() => setBgImg(bg1)} style={{ background: `url(${bg1})`, backgroundSize: "cover" }}></div>                                <div className={classes.bgItem} onClick={() => setBgImg(bg2)} style={{ background: `url(${bg2})`, backgroundSize: "cover" }}></div>                                <div className={classes.bgItem} onClick={() => setBgImg(bg3)} style={{ background: `url(${bg3})`, backgroundSize: "cover" }}></div>                                <div className={classes.bgItem} onClick={() => setBgImg(bg4)} style={{ background: `url(${bg4})`, backgroundSize: "cover" }}></div>                                <div className={classes.bgItem} onClick={() => setBgImg(bg5)} style={{ background: `url(${bg5})`, backgroundSize: "cover" }}></div>                            </div> : null                        }                    </List>                    <Divider className={classes.divider} fullWidth />                    <List >                        <ListItem onClick={handleOpen} className={hoverColor.logOut} style={{ color: "rgba(255,255,255,0.7)", cursor: "pointer" }}> <ListItemIcon> <FiLogOut style={{ color: "rgba(255,255,255,0.7)", }} size={25} /></ListItemIcon> Log Out</ListItem>                    </List>                </div>            </Drawer>            {/* LogOut Modal */}            <Modal centered show={show} onHide={handleClose} animation={true}>                <Modal.Body closeButton className="text-danger">Are sure to log out ?</Modal.Body>                <Modal.Footer>                    <Button variant="secondary" onClick={handleClose}>                        No                    </Button>                    <Button variant="danger" onClick={logOut}>                        Log Out                    </Button>                </Modal.Footer>            </Modal>        </>    )}export default withRouter(Header);
